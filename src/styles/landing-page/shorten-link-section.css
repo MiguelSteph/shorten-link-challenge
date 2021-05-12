@@ -1,0 +1,224 @@
+.shorten-link-area {
+  display: flex;
+  flex-flow: column;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  width: auto;
+
+  border-radius: 0.5rem;
+
+  background-image: url("../../images/bg-shorten-mobile.svg"),
+    linear-gradient(var(--dark-blue-color), var(--dark-blue-color));
+  background-repeat: no-repeat;
+  background-position: top right, 100%;
+
+  position: relative;
+  top: -5rem;
+}
+
+.shorten-link-input {
+  width: auto;
+  border-radius: 0.3125rem;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 2.25rem;
+  letter-spacing: 0.0075rem;
+  text-align: left;
+  color: var(--dark-blue-color);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.btn-shorten-link {
+  width: 100%;
+  border-radius: 0.5rem !important;
+  margin: 0;
+
+  margin-bottom: 1rem;
+
+  font-size: 1.125rem;
+  line-height: 1.6875rem;
+  letter-spacing: 0;
+}
+
+.shortened-result {
+  background-color: white;
+  display: flex;
+  flex-flow: column nowrap;
+  margin-top: 1.5rem;
+}
+
+.clear-relative-position {
+  margin-top: -5rem;
+}
+
+.provided-path {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+
+  color: var(--dark-blue-color);
+
+  border-bottom-style: solid;
+  border-bottom-width: 0.0625rem;
+  border-bottom-color: rgba(158, 154, 168, 0.25);
+}
+
+.shortened-link {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+
+  color: var(--light-green);
+}
+
+.shortened-result-text-typo {
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 2.25rem;
+  letter-spacing: 0.007rem;
+  text-align: left;
+}
+
+.result-area-btn {
+  width: auto;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+.btn-copy-shorten-link {
+  border-radius: 0.3125rem !important;
+  padding-top: 0.35rem !important;
+  padding-bottom: 0.35rem !important;
+
+  font-size: 1rem;
+  font-weight: 700 !important;
+
+  line-height: 1.5rem;
+  letter-spacing: 0;
+
+  margin-bottom: 1rem;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
+}
+
+@media screen and (min-width: 768px) {
+  .shorten-link-input {
+    width: auto;
+    border-radius: 0.625rem;
+  }
+
+  .shorten-link-area {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+
+    margin-left: 10%;
+    margin-right: 10%;
+
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    width: auto;
+    background-image: url("../../images/bg-shorten-desktop.svg"),
+      linear-gradient(var(--dark-blue-color), var(--dark-blue-color));
+    background-repeat: no-repeat;
+    top: -3rem;
+  }
+
+  .clear-relative-position {
+    margin-top: -3rem;
+  }
+
+  .shorten-link-input {
+    flex: 1 0 auto;
+    font-size: 1.25rem;
+    line-height: 2.25rem;
+    letter-spacing: 0.009375rem;
+    text-align: left;
+    color: var(--dark-blue-color);
+    margin-top: unset;
+    margin-bottom: unset;
+    margin-right: 0.75rem;
+    padding-left: 1rem;
+  }
+
+  .btn-shorten-link {
+    border-radius: 0.5rem !important;
+    padding-top: 0.35rem !important;
+    padding-bottom: 0.35rem !important;
+
+    font-size: 1.25rem;
+    line-height: 1.875rem;
+    letter-spacing: 0;
+    margin: 0rem;
+  }
+
+  .shortened-result {
+    background-color: white;
+    display: flex;
+    flex-flow: row nowrap;
+    margin-top: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+
+    margin-left: 10%;
+    margin-right: 10%;
+
+    align-items: center;
+  }
+
+  .shortened-result-text-typo {
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 2.25rem;
+    letter-spacing: 0.009375rem;
+    text-align: left;
+  }
+
+  .provided-path {
+    padding-left: unset;
+    padding-right: unset;
+    padding-top: unset;
+    padding-bottom: unset;
+    border-bottom-style: unset;
+    border-bottom-width: unset;
+    border-bottom-color: unset;
+    flex: 1 0 auto;
+  }
+
+  .shortened-link {
+    margin-block: 0;
+  }
+
+  .btn-copy-shorten-link {
+    border-radius: 0.5rem !important;
+    padding-top: 0.35rem !important;
+    padding-bottom: 0.35rem !important;
+
+    font-size: 0.9375rem;
+    font-weight: 700 !important;
+
+    line-height: 1.4375rem;
+    letter-spacing: 0;
+    margin: 0rem;
+
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
+}
