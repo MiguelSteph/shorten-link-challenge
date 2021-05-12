@@ -147,6 +147,7 @@ h1 {
     font-size: 0.9375rem;
     line-height: 1.4375rem;
     letter-spacing: 0;
+    border-radius: 1rem;
   }
 
   .header-getStarted-section {
@@ -200,7 +201,7 @@ h1 {
     font-size: 1.25rem;
     line-height: 1.875rem;
     letter-spacing: 0;
-    border-radius: 3rem;
+    border-radius: 6rem;
     margin-top: 2rem;
   }
 }
