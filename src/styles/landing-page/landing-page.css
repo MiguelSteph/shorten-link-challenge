@@ -26,5 +26,6 @@ body {
 }
 
 .btn:hover {
+  cursor: pointer;
   background-color: var(--fade-green);
 }

@@ -20,8 +20,13 @@
   top: -5rem;
 }
 
+.shorten-link-input-wrapper {
+  flex: 1 0 auto;
+}
+
 .shorten-link-input {
-  width: auto;
+  width: 100%;
+  box-sizing: border-box;
   border-radius: 0.3125rem;
   font-size: 1rem;
   font-style: normal;
@@ -31,7 +36,10 @@
   text-align: left;
   color: var(--dark-blue-color);
   margin-top: 1rem;
-  margin-bottom: 1rem;
+
+  padding-left: 1rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 }
 
 .btn-shorten-link {
@@ -39,11 +47,18 @@
   border-radius: 0.5rem !important;
   margin: 0;
 
+  margin-top: 1rem;
   margin-bottom: 1rem;
 
   font-size: 1.125rem;
   line-height: 1.6875rem;
   letter-spacing: 0;
+}
+
+.btn-shorten-link:disabled,
+button.btn-shorten-link[disabled] {
+  cursor: not-allowed;
+  background-color: var(--gray-color);
 }
 
 .shortened-result {
@@ -112,16 +127,27 @@
   padding-right: 2rem !important;
 }
 
-@media screen and (min-width: 768px) {
-  .shorten-link-input {
-    width: auto;
-    border-radius: 0.625rem;
-  }
+.error-message {
+  font-family: Poppins;
+  font-size: 0.75rem;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.125rem;
+  letter-spacing: 0.005125rem;
+  text-align: left;
+  color: #f46363;
+}
 
+.error-link-input {
+  border-width: 0.1875rem;
+  border-color: #f46363;
+}
+
+@media screen and (min-width: 768px) {
   .shorten-link-area {
     display: flex;
     flex-flow: row nowrap;
-    align-items: center;
+    align-items: flex-start;
 
     margin-left: 10%;
     margin-right: 10%;
@@ -129,7 +155,7 @@
     padding-left: 3%;
     padding-right: 3%;
     padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding-bottom: 1.5rem;
     width: auto;
     background-image: url("../../images/bg-shorten-desktop.svg"),
       linear-gradient(var(--dark-blue-color), var(--dark-blue-color));
@@ -141,8 +167,14 @@
     margin-top: -3rem;
   }
 
+  .shorten-link-input-wrapper {
+    margin-right: 0.75rem;
+  }
+
   .shorten-link-input {
-    flex: 1 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 0.625rem;
     font-size: 1.25rem;
     line-height: 2.25rem;
     letter-spacing: 0.009375rem;
@@ -150,8 +182,9 @@
     color: var(--dark-blue-color);
     margin-top: unset;
     margin-bottom: unset;
-    margin-right: 0.75rem;
     padding-left: 1rem;
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
   }
 
   .btn-shorten-link {
