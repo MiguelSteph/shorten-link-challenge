@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "../../styles/landing-page/shorten-link-section.css";
 import ShortenLinkForm from "./shorten-link-form";
 import Joi from "joi-browser";
+import httpServices from "../../services/httpServices";
+import ShortenLinkResult from "./shorten-link-result";
 
 class ShortenLinkSection extends Component {
   state = {
@@ -60,7 +62,6 @@ class ShortenLinkSection extends Component {
   validateField = (name, value) => {
     const fieldToValidate = { [name]: value };
     const result = Joi.validate(fieldToValidate, this.fieldSchema);
-    console.log(result);
     return result.error ? result.error.details[0].message : null;
   };
 
@@ -76,6 +77,41 @@ class ShortenLinkSection extends Component {
     return result.error ? false : true;
   };
 
+  handleSubmit = async () => {
+    const validationResult = this.validateForm();
+    if (validationResult) {
+      this.setState({
+        data: { inputLink: "" },
+        errors: { inputLink: validationResult },
+      });
+    } else {
+      const shortenedLink = await httpServices.shortenLink(
+        this.state.data.inputLink
+      );
+      if (shortenedLink.error) {
+        this.setState({
+          errors: { inputLink: shortenedLink.error },
+        });
+      } else {
+        const currentState = { ...this.state };
+        currentState.shortenedLinks.unshift(shortenedLink.data.result);
+        currentState.data.inputLink = "";
+        currentState.errors.inputLink = "";
+        this.setState(currentState);
+      }
+    }
+  };
+
+  renderResultList = () => {
+    return this.state.shortenedLinks.map((shortenedLinkResult) => (
+      <ShortenLinkResult
+        key={shortenedLinkResult.code}
+        originalLink={shortenedLinkResult.original_link}
+        shortenedLink={shortenedLinkResult.full_short_link}
+      />
+    ));
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -84,33 +120,10 @@ class ShortenLinkSection extends Component {
           handleChange={this.handleChange}
           error={this.state.errors.inputLink}
           hasError={this.enableShortenButton}
+          handleSubmit={this.handleSubmit}
         />
 
-        <div className="clear-relative-position"></div>
-
-        <div className="shortened-result">
-          <div className="provided-path shortened-result-text-typo">
-            https://twitter.com/frontendmentor.io
-          </div>
-          <p className="shortened-link shortened-result-text-typo">
-            https://reLink/k41KyK
-          </p>
-          <button className="btn btn-copy-shorten-link result-area-btn">
-            Copy
-          </button>
-        </div>
-
-        <div className="shortened-result">
-          <div className="provided-path shortened-result-text-typo">
-            https://twitter.com/frontendmentor.io
-          </div>
-          <p className="shortened-link shortened-result-text-typo">
-            https://reLink/k41KyK
-          </p>
-          <button className="btn btn-copy-shorten-link result-area-btn">
-            Copy
-          </button>
-        </div>
+        {this.renderResultList()}
       </React.Fragment>
     );
   }
