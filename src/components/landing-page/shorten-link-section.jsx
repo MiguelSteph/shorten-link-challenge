@@ -15,25 +15,7 @@ class ShortenLinkSection extends Component {
       inputLink: "",
     },
     showLoader: false,
-    shortenedLinks: [
-      {
-        code: "232",
-        original_link: "https://stackoverflow.com/questions",
-        full_short_link: "https://google.com/search",
-      },
-      {
-        code: "233",
-        original_link:
-          "https://stackoverflow.com/questions/37446029/render-content-dynamically-from-an-array-map-function-in-react-native",
-        full_short_link: "https://google.com/search",
-      },
-      {
-        code: "234",
-        original_link:
-          "https://stackoverflow.com/questions/37446029/render-content-dynamically-from-an-array-map-function-in-react-native",
-        full_short_link: "https://google.com/search",
-      },
-    ],
+    shortenedLinks: [],
   };
 
   submitSchema = {

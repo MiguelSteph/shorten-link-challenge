@@ -144,6 +144,10 @@ button.btn-shorten-link[disabled] {
   border-color: #f46363;
 }
 
+.copied-btn {
+  background-color: var(--medium-blue-color) !important;
+}
+
 @media screen and (min-width: 768px) {
   .shorten-link-area {
     display: flex;

@@ -1,7 +1,23 @@
 import React, { Component } from "react";
 
 class ShortenLinkResult extends Component {
-  state = {};
+  state = {
+    isCopied: false,
+  };
+
+  handleCopy = () => {
+    navigator.clipboard.writeText(this.props.shortenedLink);
+    this.setState({ isCopied: true });
+    setTimeout(() => {
+      this.setState({ isCopied: false });
+    }, 2000);
+  };
+
+  getBtnClassesName = () =>
+    this.state.isCopied
+      ? "btn btn-copy-shorten-link result-area-btn copied-btn"
+      : "btn btn-copy-shorten-link result-area-btn";
+
   render() {
     const { originalLink, shortenedLink } = this.props;
     return (
@@ -12,8 +28,8 @@ class ShortenLinkResult extends Component {
         <p className="shortened-link shortened-result-text-typo">
           {shortenedLink}
         </p>
-        <button className="btn btn-copy-shorten-link result-area-btn">
-          Copy
+        <button onClick={this.handleCopy} className={this.getBtnClassesName()}>
+          {this.state.isCopied ? "Copied" : "Copy"}
         </button>
       </div>
     );
