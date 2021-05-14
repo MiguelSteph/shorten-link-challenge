@@ -4,6 +4,7 @@ import ShortenLinkForm from "./shorten-link-form";
 import Joi from "joi-browser";
 import httpServices from "../../services/httpServices";
 import ShortenLinkResult from "./shorten-link-result";
+import Loader from "./loader";
 
 class ShortenLinkSection extends Component {
   state = {
@@ -13,6 +14,7 @@ class ShortenLinkSection extends Component {
     errors: {
       inputLink: "",
     },
+    showLoader: false,
     shortenedLinks: [
       {
         code: "232",
@@ -103,18 +105,21 @@ class ShortenLinkSection extends Component {
         errors: { inputLink: validationResult },
       });
     } else {
+      this.setState({ showLoader: true });
       const shortenedLink = await httpServices.shortenLink(
         this.state.data.inputLink
       );
       if (shortenedLink.error) {
         this.setState({
           errors: { inputLink: shortenedLink.error },
+          showLoader: false,
         });
       } else {
         const currentState = { ...this.state };
         currentState.shortenedLinks.unshift(shortenedLink.data.result);
         currentState.data.inputLink = "";
         currentState.errors.inputLink = "";
+        currentState.showLoader = false;
         this.setState(currentState);
       }
     }
@@ -139,7 +144,10 @@ class ShortenLinkSection extends Component {
           error={this.state.errors.inputLink}
           hasError={this.enableShortenButton}
           handleSubmit={this.handleSubmit}
+          showLoader={this.state.showLoader}
         />
+
+        {this.state.showLoader && <Loader />}
 
         {this.renderResultList()}
       </React.Fragment>

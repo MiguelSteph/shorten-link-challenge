@@ -6,6 +6,7 @@ const ShortenLinkForm = ({
   error,
   hasError,
   handleSubmit,
+  showLoader,
 }) => {
   return (
     <React.Fragment>
@@ -16,6 +17,7 @@ const ShortenLinkForm = ({
             name="inputLink"
             value={value}
             onChange={(event) => handleChange(event)}
+            disabled={showLoader}
             className={
               error
                 ? "shorten-link-input error-link-input"
@@ -31,7 +33,7 @@ const ShortenLinkForm = ({
           <button
             onClick={handleSubmit}
             className="btn btn-shorten-link"
-            disabled={!hasError()}
+            disabled={!hasError() || showLoader}
           >
             Shorten It!
           </button>
