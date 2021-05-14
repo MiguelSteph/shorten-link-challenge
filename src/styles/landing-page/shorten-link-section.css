@@ -64,7 +64,7 @@ button.btn-shorten-link[disabled] {
 .shortened-result {
   background-color: white;
   display: flex;
-  flex-flow: column nowrap;
+  flex-flow: column wrap;
   margin-top: 1.5rem;
 }
 
@@ -100,6 +100,7 @@ button.btn-shorten-link[disabled] {
   line-height: 2.25rem;
   letter-spacing: 0.007rem;
   text-align: left;
+  word-break: break-all;
 }
 
 .result-area-btn {
@@ -200,8 +201,9 @@ button.btn-shorten-link[disabled] {
 
   .shortened-result {
     background-color: white;
-    display: flex;
-    flex-flow: row nowrap;
+    display: grid;
+    grid-template-columns: auto auto min-content;
+    grid-template-rows: 100%;
     margin-top: 1rem;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
@@ -232,11 +234,16 @@ button.btn-shorten-link[disabled] {
     border-bottom-style: unset;
     border-bottom-width: unset;
     border-bottom-color: unset;
-    flex: 1 0 auto;
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
+    justify-self: start;
   }
 
   .shortened-link {
     margin-block: 0;
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+    justify-self: end;
   }
 
   .btn-copy-shorten-link {
@@ -253,5 +260,11 @@ button.btn-shorten-link[disabled] {
 
     padding-left: 2rem !important;
     padding-right: 2rem !important;
+  }
+
+  .result-area-btn {
+    grid-row: 1 / 2;
+    grid-column: 3 / 4;
+    align-items: center;
   }
 }
