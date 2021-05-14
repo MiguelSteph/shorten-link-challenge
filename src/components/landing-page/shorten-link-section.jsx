@@ -18,6 +18,13 @@ class ShortenLinkSection extends Component {
     shortenedLinks: [],
   };
 
+  componentDidMount() {
+    const shortenedLinks = JSON.parse(sessionStorage.getItem("shortenedLinks"));
+    if (shortenedLinks) {
+      this.setState({ shortenedLinks: shortenedLinks });
+    }
+  }
+
   submitSchema = {
     inputLink: Joi.string()
       .uri()
@@ -103,6 +110,10 @@ class ShortenLinkSection extends Component {
         currentState.errors.inputLink = "";
         currentState.showLoader = false;
         this.setState(currentState);
+        sessionStorage.setItem(
+          "shortenedLinks",
+          JSON.stringify(this.state.shortenedLinks)
+        );
       }
     }
   };
